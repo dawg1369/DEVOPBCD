@@ -34,7 +34,7 @@ config t
 	 ip add 10._.100.4 255.255.255.0
 	 description VOICEVLAN
 
-TASK3: THE ULTIMATE SKILL FOR A NETWORK ENGINEER.
+TASK3: THE ULTIMATE SKILL FOR A NETWORK ENGINEER.:Redundancy
 Top 5 brands: PANG MAYAMAN
 1.Cisco = 75% =google,aws,azure,etc,
         Cisco Invented the FirstEthernetSW
@@ -106,15 +106,34 @@ SuperMan: 802.1s: MiSTP
 
 TASK8: ACCESS PORTS VS TRUNK PORTS: lab mo sa exam.
 +
-d1,d2,a1,a2
+D1, D2
 config t
-Int Range e0/1-
+Int Range e0/0-3, e1/2-3
  shutdown
  switchport trunk Encap Dot1Q
  switchport mode trunk
  switchport trunk allowed vlan 1-100
  no shut
  do sh int trunk
+A1
+config t
+Int Range e0/0-3, e1/0
+ shutdown
+ switchport trunk Encap Dot1Q
+ switchport mode trunk
+ switchport trunk allowed vlan 1-100
+ no shut
+ do sh int trunk
+A2
+config t
+Int Range e0/0-3
+ shutdown
+ switchport trunk Encap Dot1Q
+ switchport mode trunk
+ switchport trunk allowed vlan 1-100
+ no shut
+ do sh int trunk
+
 Dot1q = Qupid,mave switches love each other:
       IEEE standard where SW will from Layer 2 trunks
 
@@ -122,6 +141,7 @@ TASK9: SPANNING-TREE PROTOCOL: 802.1D: protect switches Slowly.
 blk-lis-lrn-fwd = 30 seconds.
 wireshark = bridge priority is 32768 = very Hackable!
 " bobo/inutil ang Network Engineer nyo sa company!"
+24576 = "qualified talented skilled", 28678 = "Drug Addict\High na High"
 Protect the Most Important SWitch in your 
 Office: RootBridge = TAAS, 2ndRootBridge = BABA:
 TAAS:/d1       32786 --> 24576
@@ -130,6 +150,7 @@ spanning-tree mode pvst
 spanning-tree vlan 1-100 root Primary
 do sh spanning-tree vlan 1
 BABA:/d2         32768->   28672
+
 Config t              
 spanning-tree mode pvst
 spanning-tree vlan 1-100 root Secondary
@@ -166,14 +187,14 @@ config t
 spanning-tree Mode Rapid-pvst
 spanning-tree BackBoneFast
 spanning-tree portfast bpduguard default
-Int Range fa0/1-8
+Int e1/0
    spanning-tree Portfast
 @BABA/d2/a1/a2:
 config t
 spanning-tree Mode Rapid-pvst
 spanning-tree UplinkFast
 spanning-tree portfast bpduguard default
-Int Range fa0/1-8
+Int e1/0
   spanning-tree Portfast
 end
 
@@ -183,16 +204,16 @@ Make FORCEs all CPU/Instances work to protect VLANs, cpu0 = is working
 step1: sync all Vlans with VTP:vlanTrunkingProtocol:
 TAAS/BABA: d1/d2:
 config t
-vtp domain ccna
-vtp password pass
+vtp domain panasiatic
+vtp password panasiatic
 vtp mode server
 vtp version 2
 exit
 
 a1/a2: access SW
 config t
-vtp domain ccna
-vtp password pass
+vtp domain panasiatic
+vtp password panasiatic
 vtp mode client
 vtp version 1
 exit
